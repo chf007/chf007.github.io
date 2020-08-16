@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>怒涛小站</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="山姆卓越会员权益计算器 		 		 			function calculate(){ 				var yuegoumai &#x3D; 0; 				try{ 					yuegoumai &#x3D; parseInt(document.getElementById(&#39;txt_month_buy&#39;).value); 				}catch(E){ 					yuegoumai &#x3D; 0; 				}">
+<meta property="og:type" content="website">
+<meta property="og:title" content="怒涛小站">
+<meta property="og:url" content="https://chf007.com/static/equity-calc2.html">
+<meta property="og:site_name" content="怒涛小站">
+<meta property="og:description" content="山姆卓越会员权益计算器 		 		 			function calculate(){ 				var yuegoumai &#x3D; 0; 				try{ 					yuegoumai &#x3D; parseInt(document.getElementById(&#39;txt_month_buy&#39;).value); 				}catch(E){ 					yuegoumai &#x3D; 0; 				}">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2020-08-16T12:35:29.412Z">
+<meta property="article:modified_time" content="2018-11-10T07:58:38.000Z">
+<meta property="article:author" content="chf007">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="怒涛小站" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  <script>
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?efa4ef09259b2f8cba888fa77401961b";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+<meta name="generator" content="Hexo 5.0.2"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">怒涛小站</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">首页</a>
+        
+          <a class="main-nav-link" href="/archives">归档</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="搜索"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://chf007.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="page-" class="article article-type-page" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/static/equity-calc2.html" class="article-date">
+  <time datetime="2020-08-16T12:35:29.412Z" itemprop="datePublished">2020-08-16</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<title>山姆卓越会员权益计算器</title>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<script>
+			function calculate(){
+				var yuegoumai = 0;
+				try{
+					yuegoumai = parseInt(document.getElementById('txt_month_buy').value);
+				}catch(E){
+					yuegoumai = 0;
+				}
+				if(isNaN(yuegoumai)){
+					yuegoumai = 0;
+				}
+				var xiche = 0;
+				try{
+					xiche = parseInt(document.getElementById('txt_car').value);
+				}catch(E){
+					xiche = 0;
+				}
+				if(isNaN(xiche)){
+					xiche = 0;
+				}
+				var xiya = 0;
+				try{
+					xiya = parseInt(document.getElementById('txt_tooth').value);
+				}catch(E){
+					xiya = 0;
+				}
+				if(isNaN(xiya)){
+					xiya = 0;
+				}
+				if (yuegoumai > 25000){
+					console.log('月购买金额大于25000，按25000计算');
+					yuegoumai = 25000;
+				}else{
+					console.log('月购买金额小于25000，按'+yuegoumai+'计算');					
+				}
+				if(yuegoumai < 500){
+					console.log('月购买金额小于500，按500计算');
+					yuegoumai = 500;
+				}else{
+					console.log('月购买金额大于500，按'+yuegoumai+'计算');	
+				}
+				var jifen = yuegoumai * 2;
+				console.log('计算积分：月购买*2='+jifen);
+				if(jifen % 1000 > 0){
+					jifen = (parseInt(jifen / 1000) + 1) * 1000;
+				}
+				jifen = jifen * 12 / 100;
+				console.log('年积分：月积分*12='+jifen);
+				jifen = parseInt(jifen);
+				document.getElementById('lab_jifen').innerText = jifen + "元/年";
+				var mianfeixiche = xiche * 12;
+				document.getElementById('lab_mianfeixiche').innerText = mianfeixiche + "元/年";
+				var xiyajiazhi = xiya * 4;
+				document.getElementById('lab_xiya').innerText = xiyajiazhi + "元/年";
+				var baoyouquanjin = 15*12;
+				document.getElementById('lab_baoyou').innerText = baoyouquanjin + "元/年";
+				var dajianyanbao = 498
+				document.getElementById('lab_dajianyanbao').innerText = dajianyanbao + "元/年";
+				var total = jifen + mianfeixiche + xiyajiazhi + baoyouquanjin + dajianyanbao;
+				document.getElementById('lab_total').innerText = total + "元/年";
+
+			}
+		</script>
+		<style>
+		.common_fonts{
+			font-size:3em;
+		}
+		.title_fonts{
+			font-size:5em;
+		}
+	</style>
+	</head>
+	<body>
+		<table border="0" cellspacing="0" cellpadding="0" width='100%' height=''>
+			<tr>
+				<td class='title_fonts' style='text-align: center;padding-top:50px;padding-bottom:50px;' colspan='2'>
+					山姆卓越会员权益计算器
+				</td>
+			</tr>
+			<tr>
+				<td class='common_fonts'>月购买金额：</td>
+				<td ><input type='input' placeholder="请输入月购买金额" id="txt_month_buy" value='' class='common_fonts' style='padding-top:5px;padding-bottom: 5px;'></td>
+			</tr>
+			<tr>
+				<td class='common_fonts'>洗车金额：</td>
+				<td id="month_buy"><input placeholder="请输入洗车金额" type='input' id='txt_car' value='' class='common_fonts' style='padding-top:5px;padding-bottom: 5px;'></td>
+			</tr>
+			<tr>
+				<td class='common_fonts'>洗牙金额：</td>
+				<td id="month_buy"><input placeholder="请输入洗牙金额" type='input' id='txt_tooth' value='' class='common_fonts' style='padding-top:5px;padding-bottom: 5px;'></td>
+			</tr>
+			<tr>
+				<td class='common_fonts'>返还优惠券：</td>
+				<td id='lab_jifen' class='common_fonts'></td>
+			</tr>
+			<tr>
+				<td class='common_fonts'>免费洗车：</td>
+				<td id='lab_mianfeixiche' class='common_fonts'></td>
+			</tr>
+			<tr>
+				<td class='common_fonts'>洗牙价值：</td>
+				<td id='lab_xiya' class='common_fonts'></td>
+			</tr>
+			<tr>
+				<td class='common_fonts'>包邮券：</td>
+				<td id='lab_baoyou' class='common_fonts'></td>
+			</tr>
+			<tr>
+				<td class='common_fonts'>大件延保：</td>
+				<td id='lab_dajianyanbao' class='common_fonts'></td>
+			</tr>
+			<tr>
+				<td class='common_fonts'>总价值：</td>
+				<td id='lab_total' class='common_fonts'></td>
+			</tr>
+			<tr>
+				<td colspan='2' align='center'><input type='button' value=' 计算 ' onclick='calculate()' class='title_fonts'/></td>
+			</tr>
+		</table>
+	</body>
+</html>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://chf007.com/static/equity-calc2.html" data-id="ckdx2porg0000jgv4hon9cpkc" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/08/">八月 2020</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2020/08/16/hello-world/">Hello World</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+
+  <div style="display: flex; justify-content: center;"><a href="https://url.cn/x7qBy9KW" target="_blank"><img src="/tcloud-ad-180x460.jpg" alt="【腾讯云】云产品限时秒杀，爆款1核2G云服务器，首年99元" /></a></div>
+</aside>
+
+
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2020 chf007 网站备案/许可证号：<a href="http://www.beian.miit.gov.cn" target="_blank">粤ICP备17102038号-1</a><br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">首页</a>
+  
+    <a href="/archives" class="mobile-nav-link">归档</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+  
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+  </div>
+  <script src="/live2d/L2Dwidget.min.js"></script>
+  <script type="text/javascript">
+    L2Dwidget.init({
+      model: {
+        jsonPath: '/live2d/tororo/assets/tororo.model.json',
+      },
+      display: {
+        superSample: 2,
+        width: 150,
+        height: 150,
+        position: 'right',
+        hOffset: 0,
+        vOffset: 0,
+      },
+      mobile: {
+        show: true,
+        scale: 1,
+        motion: true,
+      },
+      react: {
+        opacityDefault: 0.8,
+        opacityOnHover: 0.2,
+      }
+    })
+  </script>
+</body>
+</html>
