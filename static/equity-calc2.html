@@ -1,0 +1,258 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>怒涛小站 | chf007 的自留地</title>
+
+  
+  <meta name="author" content="chf007">
+  
+
+  
+  <meta name="description" content="Fullstack Developer">
+  
+
+  
+
+  <meta id="viewport" name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+  
+
+  <meta property="og:site_name" content="怒涛小站"/>
+
+  
+  <meta property="og:image" content="/favicon.ico"/>
+  
+
+  <link href="/favicon.ico" rel="icon">
+  <link rel="alternate" href="/atom.xml" title="怒涛小站" type="application/atom+xml">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+<meta name="generator" content="Hexo 5.0.2"></head>
+
+
+<body>
+<div class="blog">
+  <div class="content">
+
+    <header>
+  <div class="site-branding">
+    <h1 class="site-title">
+      <a href="/">怒涛小站</a>
+    </h1>
+    <p class="site-description">chf007 的自留地</p>
+  </div>
+  <nav class="site-navigation">
+    <ul>
+      
+        <li><a href="/">主页</a></li>
+      
+        <li><a href="/categories">分类</a></li>
+      
+        <li><a href="/tags">标签</a></li>
+      
+        <li><a href="/archives">归档</a></li>
+      
+        <li><a href="/about">关于</a></li>
+      
+        <li><a href="/atom.xml">订阅</a></li>
+      
+    </ul>
+  </nav>
+</header>
+
+    <main class="site-main posts-loop">
+    <article>
+
+  
+    
+    <h3 class="article-title"><span></span></h3>
+    
+  
+
+  <div class="article-top-meta">
+    <span class="posted-on">
+      <a href="/static/equity-calc2.html" rel="bookmark">
+        <time class="entry-date published" datetime="2020-10-10T03:14:16.737Z">
+          2020-10-10
+        </time>
+      </a>
+    </span>
+  </div>
+
+
+  
+
+  <div class="article-content">
+    <div class="entry">
+      
+        <html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<title>山姆卓越会员权益计算器</title>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<script>
+			function calculate(){
+				var yuegoumai = 0;
+				try{
+					yuegoumai = parseInt(document.getElementById('txt_month_buy').value);
+				}catch(E){
+					yuegoumai = 0;
+				}
+				if(isNaN(yuegoumai)){
+					yuegoumai = 0;
+				}
+				var xiche = 0;
+				try{
+					xiche = parseInt(document.getElementById('txt_car').value);
+				}catch(E){
+					xiche = 0;
+				}
+				if(isNaN(xiche)){
+					xiche = 0;
+				}
+				var xiya = 0;
+				try{
+					xiya = parseInt(document.getElementById('txt_tooth').value);
+				}catch(E){
+					xiya = 0;
+				}
+				if(isNaN(xiya)){
+					xiya = 0;
+				}
+				if (yuegoumai > 25000){
+					console.log('月购买金额大于25000，按25000计算');
+					yuegoumai = 25000;
+				}else{
+					console.log('月购买金额小于25000，按'+yuegoumai+'计算');					
+				}
+				if(yuegoumai < 500){
+					console.log('月购买金额小于500，按500计算');
+					yuegoumai = 500;
+				}else{
+					console.log('月购买金额大于500，按'+yuegoumai+'计算');	
+				}
+				var jifen = yuegoumai * 2;
+				console.log('计算积分：月购买*2='+jifen);
+				if(jifen % 1000 > 0){
+					jifen = (parseInt(jifen / 1000) + 1) * 1000;
+				}
+				jifen = jifen * 12 / 100;
+				console.log('年积分：月积分*12='+jifen);
+				jifen = parseInt(jifen);
+				document.getElementById('lab_jifen').innerText = jifen + "元/年";
+				var mianfeixiche = xiche * 12;
+				document.getElementById('lab_mianfeixiche').innerText = mianfeixiche + "元/年";
+				var xiyajiazhi = xiya * 4;
+				document.getElementById('lab_xiya').innerText = xiyajiazhi + "元/年";
+				var baoyouquanjin = 15*12;
+				document.getElementById('lab_baoyou').innerText = baoyouquanjin + "元/年";
+				var dajianyanbao = 498
+				document.getElementById('lab_dajianyanbao').innerText = dajianyanbao + "元/年";
+				var total = jifen + mianfeixiche + xiyajiazhi + baoyouquanjin + dajianyanbao;
+				document.getElementById('lab_total').innerText = total + "元/年";
+
+			}
+		</script>
+		<style>
+		.common_fonts{
+			font-size:3em;
+		}
+		.title_fonts{
+			font-size:5em;
+		}
+	</style>
+	</head>
+	<body>
+		<table border="0" cellspacing="0" cellpadding="0" width='100%' height=''>
+			<tr>
+				<td class='title_fonts' style='text-align: center;padding-top:50px;padding-bottom:50px;' colspan='2'>
+					山姆卓越会员权益计算器
+				</td>
+			</tr>
+			<tr>
+				<td class='common_fonts'>月购买金额：</td>
+				<td ><input type='input' placeholder="请输入月购买金额" id="txt_month_buy" value='' class='common_fonts' style='padding-top:5px;padding-bottom: 5px;'></td>
+			</tr>
+			<tr>
+				<td class='common_fonts'>洗车金额：</td>
+				<td id="month_buy"><input placeholder="请输入洗车金额" type='input' id='txt_car' value='' class='common_fonts' style='padding-top:5px;padding-bottom: 5px;'></td>
+			</tr>
+			<tr>
+				<td class='common_fonts'>洗牙金额：</td>
+				<td id="month_buy"><input placeholder="请输入洗牙金额" type='input' id='txt_tooth' value='' class='common_fonts' style='padding-top:5px;padding-bottom: 5px;'></td>
+			</tr>
+			<tr>
+				<td class='common_fonts'>返还优惠券：</td>
+				<td id='lab_jifen' class='common_fonts'></td>
+			</tr>
+			<tr>
+				<td class='common_fonts'>免费洗车：</td>
+				<td id='lab_mianfeixiche' class='common_fonts'></td>
+			</tr>
+			<tr>
+				<td class='common_fonts'>洗牙价值：</td>
+				<td id='lab_xiya' class='common_fonts'></td>
+			</tr>
+			<tr>
+				<td class='common_fonts'>包邮券：</td>
+				<td id='lab_baoyou' class='common_fonts'></td>
+			</tr>
+			<tr>
+				<td class='common_fonts'>大件延保：</td>
+				<td id='lab_dajianyanbao' class='common_fonts'></td>
+			</tr>
+			<tr>
+				<td class='common_fonts'>总价值：</td>
+				<td id='lab_total' class='common_fonts'></td>
+			</tr>
+			<tr>
+				<td colspan='2' align='center'><input type='button' value=' 计算 ' onclick='calculate()' class='title_fonts'/></td>
+			</tr>
+		</table>
+	</body>
+</html>
+
+      
+    </div>
+
+  </div>
+
+  <div class="article-footer">
+    <div class="article-meta pull-left">
+
+    
+
+    
+
+    </div>
+
+    
+  </div>
+</article>
+
+  
+
+
+
+
+
+
+    </main>
+
+    <footer class="site-footer">
+  <p class="site-info">
+    Proudly powered by <a href="https://hexo.io/" target="_blank">Hexo</a> and
+    Theme by <a href="https://github.com/CodeDaraW/Hacker" target="_blank">Hacker</a>
+    </br>
+    &copy; 2021 chf007 网站备案/许可证号：<a href="http://www.beian.miit.gov.cn" target="_blank">粤ICP备17102038号-1</a>
+  </p>
+</footer>
+
+    
+    
+  </div>
+</div>
+</body>
+</html>

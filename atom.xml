@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>怒涛小站</title>
+  
+  <subtitle>chf007 的自留地</subtitle>
+  <link href="https://chf007.com/atom.xml" rel="self"/>
+  
+  <link href="https://chf007.com/"/>
+  <updated>2021-12-02T10:22:12.504Z</updated>
+  <id>https://chf007.com/</id>
+  
+  <author>
+    <name>chf007</name>
+    
+  </author>
+  
+  <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Hello World</title>
+    <link href="https://chf007.com/2020/10/10/hello-world/"/>
+    <id>https://chf007.com/2020/10/10/hello-world/</id>
+    <published>2020-10-10T03:14:16.736Z</published>
+    <updated>2021-12-02T10:22:12.504Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html"></summary>
+        
+      
+    
+    
+    
+    <category term="生活" scheme="https://chf007.com/categories/%E7%94%9F%E6%B4%BB/"/>
+    
+    
+    <category term="haha" scheme="https://chf007.com/tags/haha/"/>
+    
+  </entry>
+  
+</feed>
