@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   
-  <title>怒涛小站 | chf007 的自留地</title>
+  <title>Rust 引用与借用 | 怒涛小站 | chf007 的自留地</title>
 
   
   <meta name="author" content="chf007">
@@ -14,12 +14,15 @@
   
 
   
+  
+  <meta name="keywords" content="Rust">
+  
 
   <meta id="viewport" name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
 
-  
+  <meta property="og:title" content="Rust 引用与借用"/>
 
   <meta property="og:site_name" content="怒涛小站"/>
 
@@ -64,12 +67,11 @@
 </header>
 
     <main class="site-main posts-loop">
-    
-  <article>
+    <article>
 
   
     
-    <h3 class="article-title"><a href="/2021/12/03/rust-references-and-borrowing/"><span>Rust 引用与借用</span></a></h3>
+    <h3 class="article-title"><span>Rust 引用与借用</span></h3>
     
   
 
@@ -211,120 +213,13 @@
   </div>
 </article>
 
-
-
-  <article>
-
-  
-    
-    <h3 class="article-title"><a href="/2021/12/03/rust-variables-and-mutability/"><span>Rust 变量和可变性</span></a></h3>
-    
   
 
-  <div class="article-top-meta">
-    <span class="posted-on">
-      <a href="/2021/12/03/rust-variables-and-mutability/" rel="bookmark">
-        <time class="entry-date published" datetime="2021-12-03T08:51:16.000Z">
-          2021-12-03
-        </time>
-      </a>
-    </span>
-  </div>
-
-
-  
-
-  <div class="article-content">
-    <div class="entry">
-      
-        <h2 id="变量和可变性"><a href="#变量和可变性" class="headerlink" title="变量和可变性"></a>变量和可变性</h2><blockquote>
-<p><a target="_blank" rel="noopener" href="https://github.com/rust-lang/book/blob/main/src/ch03-01-variables-and-mutability.md">ch03-01-variables-and-mutability.md</a><br><br><br>commit 05d9c4c2312a6542f792492d17a62f79ad6dfd7b</p>
-</blockquote>
-<p>正如第二章中<a href="ch02-00-guessing-game-tutorial.html#%E4%BD%BF%E7%94%A8%E5%8F%98%E9%87%8F%E5%82%A8%E5%AD%98%E5%80%BC">“使用变量储存值”</a><!-- ignore --> 部分提到的那样，变量默认是不可改变的（immutable）。这是 Rust 提供给你的众多优势之一，让你得以充分利用 Rust 提供的安全性和简单并发性来编写代码。不过，你仍然可以使用可变变量。让我们探讨一下 Rust 为何及如何鼓励你利用不可变性，以及何时你会选择不使用不可变性。</p>
-<p>当变量不可变时，一旦值被绑定一个名称上，你就不能改变这个值。为了对此进行说明，使用 <code>cargo new variables</code> 命令在 <em>projects</em> 目录生成一个叫做 <em>variables</em> 的新项目。</p>
-<p>接着，在新建的 <em>variables</em> 目录，打开 <em>src/main.rs</em> 并将代码替换为如下代码，这些代码还不能编译：</p>
-<p><span class="filename">文件名: src/main.rs</span></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">fn main() &#123;</span><br><span class="line">    let x &#x3D; 5;</span><br><span class="line">    println!(&quot;The value of x is: &#123;&#125;&quot;, x);</span><br><span class="line">    x &#x3D; 6;</span><br><span class="line">    println!(&quot;The value of x is: &#123;&#125;&quot;, x);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>保存并使用 <code>cargo run</code> 运行程序。应该会看到一条错误信息，如下输出所示：</p>
-<figure class="highlight console"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> cargo run</span></span><br><span class="line">   Compiling variables v0.1.0 (file:///projects/variables)</span><br><span class="line">error[E0384]: cannot assign twice to immutable variable `x`</span><br><span class="line"><span class="meta"> --&gt;</span><span class="bash"> src/main.rs:4:5</span></span><br><span class="line">  |</span><br><span class="line">2 |     let x = 5;</span><br><span class="line">  |         -</span><br><span class="line">  |         |</span><br><span class="line">  |         first assignment to `x`</span><br><span class="line">  |         help: consider making this binding mutable: `mut x`</span><br><span class="line">3 |     println!(&quot;The value of x is: &#123;&#125;&quot;, x);</span><br><span class="line">4 |     x = 6;</span><br><span class="line">  |     ^^^^^ cannot assign twice to immutable variable</span><br><span class="line"></span><br><span class="line">error: aborting due to previous error</span><br><span class="line"></span><br><span class="line">For more information about this error, try `rustc --explain E0384`.</span><br><span class="line">error: could not compile `variables`</span><br><span class="line"></span><br><span class="line">To learn more, run the command again with --verbose.</span><br></pre></td></tr></table></figure>
-
-<p>这个例子展示了编译器如何帮助你找出程序中的错误。虽然编译错误令人沮丧，但那只是表示程序不能安全的完成你想让它完成的工作；并 <strong>不能</strong> 说明你不是一个好程序员！经验丰富的 Rustacean 们一样会遇到编译错误。</p>
-<p>错误信息指出错误的原因是 <code>不能对不可变变量 x 二次赋值</code>（<code>cannot assign twice to immutable variable `x` </code>），因为你尝试对不可变变量 <code>x</code> 赋第二个值。</p>
-<p>在尝试改变预设为不可变的值时，产生编译时错误是很重要的，因为这种情况可能导致 bug。如果一部分代码假设一个值永远也不会改变，而另一部分代码改变了这个值，第一部分代码就有可能以不可预料的方式运行。不得不承认这种 bug 的起因难以跟踪，尤其是第二部分代码只是 <strong>有时</strong> 会改变值。</p>
-<p>Rust 编译器保证，如果声明一个值不会变，它就真的不会变。这意味着当阅读和编写代码时，不需要追踪一个值如何和在哪可能会被改变，从而使得代码易于推导。</p>
-<p>不过可变性也是非常有用的。变量只是默认不可变；正如在第二章所做的那样，你可以在变量名之前加 <code>mut</code> 来使其可变。除了允许改变值之外，<code>mut</code> 向读者表明了其他代码将会改变这个变量值的意图。</p>
-<p>例如，让我们将 <em>src/main.rs</em> 修改为如下代码：</p>
-<p><span class="filename">文件名: src/main.rs</span></p>
-<figure class="highlight rust"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">fn</span> <span class="title">main</span></span>() &#123;</span><br><span class="line">    <span class="keyword">let</span> <span class="keyword">mut</span> x = <span class="number">5</span>;</span><br><span class="line">    <span class="built_in">println!</span>(<span class="string">&quot;The value of x is: &#123;&#125;&quot;</span>, x);</span><br><span class="line">    x = <span class="number">6</span>;</span><br><span class="line">    <span class="built_in">println!</span>(<span class="string">&quot;The value of x is: &#123;&#125;&quot;</span>, x);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>现在运行这个程序，出现如下内容：</p>
-<figure class="highlight console"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> cargo run</span></span><br><span class="line">   Compiling variables v0.1.0 (file:///projects/variables)</span><br><span class="line">    Finished dev [unoptimized + debuginfo] target(s) in 0.30s</span><br><span class="line">     Running `target/debug/variables`</span><br><span class="line">The value of x is: 5</span><br><span class="line">The value of x is: 6</span><br></pre></td></tr></table></figure>
-
-<p>通过 <code>mut</code>，允许把绑定到 <code>x</code> 的值从 <code>5</code> 改成 <code>6</code>。在一些情况下，你会想用可变变量，因为与只用不可变变量相比，它会让代码更容易编写。</p>
-<p>除了防止出现 bug 外，还有很多地方需要权衡取舍。例如，使用大型数据结构时，适当地使用可变变量，可能比复制和返回新分配的实例更快。对于较小的数据结构，总是创建新实例，采用更偏向函数式的编程风格，可能会使代码更易理解，为可读性而牺牲性能或许是值得的。</p>
-<h3 id="变量和常量的区别"><a href="#变量和常量的区别" class="headerlink" title="变量和常量的区别"></a>变量和常量的区别</h3><p>不允许改变值的变量，可能会使你想起另一个大部分编程语言都有的概念：<strong>常量</strong>（<em>constants</em>）。类似于不可变变量，常量是绑定到一个名称的不允许改变的值，不过常量与变量还是有一些区别。</p>
-<p>首先，不允许对常量使用 <code>mut</code>。常量不光默认不能变，它总是不能变。</p>
-<p>声明常量使用 <code>const</code> 关键字而不是 <code>let</code>，并且 <em>必须</em> 注明值的类型。在下一部分，<a href="ch03-02-data-types.html#%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B">“数据类型”</a> 中会介绍类型和类型注解，现在无需关心这些细节，记住总是标注类型即可。</p>
-<p>常量可以在任何作用域中声明，包括全局作用域，这在一个值需要被很多部分的代码用到时很有用。</p>
-<p>最后一个区别是，常量只能被设置为常量表达式，而不可以是其他任何只能在运行时计算出的值。</p>
-<p>下面是一个声明常量的例子，常量的名称是 <code>THREE_HOURS_IN_SECONDS</code>，它的值被设置为 60（一分钟内的秒数）乘以 60（一小时内的分钟数）再乘以 3（我们在这个程序中要计算的小时数）的结果：</p>
-<figure class="highlight rust"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> THREE_HOURS_IN_SECONDS: <span class="built_in">u32</span> = <span class="number">60</span> * <span class="number">60</span> * <span class="number">3</span>;</span><br></pre></td></tr></table></figure>
-
-<p>Rust 对常量的命名约定是在单词之间使用全大写加下划线。编译器能够在编译时计算一组有限的操作，这使我们可以选择以更容易理解和验证的方式写出此值，而不是将此常量设置为值10,800。有关声明常量时可以使用哪些操作的详细信息，请参阅 <a target="_blank" rel="noopener" href="https://doc.rust-lang.org/reference/const_eval.html">Rust Reference 的常量求值部分</a>。</p>
-<p>在声明它的作用域之中，常量在整个程序生命周期中都有效，此属性使得常量可以作为多处代码使用的全局范围的值，例如一个游戏中所有玩家可以获取的最高分或者光速。</p>
-<p>将遍布于应用程序中的硬编码值声明为常量，能帮助后来的代码维护人员了解值的意图。如果将来需要修改硬编码值，也只需修改汇聚于一处的硬编码值。</p>
-<h3 id="隐藏（Shadowing）"><a href="#隐藏（Shadowing）" class="headerlink" title="隐藏（Shadowing）"></a>隐藏（Shadowing）</h3><p>正如在第二章猜猜看游戏的 <a href="ch02-00-guessing-game-tutorial.html#%E6%AF%94%E8%BE%83%E7%8C%9C%E6%B5%8B%E7%9A%84%E6%95%B0%E5%AD%97%E5%92%8C%E7%A7%98%E5%AF%86%E6%95%B0%E5%AD%97">“比较猜测的数字和秘密数字”</a> 中所讲，我们可以定义一个与之前变量同名的新变量。Rustacean 们称之为第一个变量被第二个 <strong>隐藏</strong> 了，这意味着程序使用这个变量时会看到第二个值。可以用相同变量名称来隐藏一个变量，以及重复使用 <code>let</code> 关键字来多次隐藏，如下所示：</p>
-<p><span class="filename">文件名: src/main.rs</span></p>
-<figure class="highlight rust"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">fn</span> <span class="title">main</span></span>() &#123;</span><br><span class="line">    <span class="keyword">let</span> x = <span class="number">5</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">let</span> x = x + <span class="number">1</span>;</span><br><span class="line"></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">let</span> x = x * <span class="number">2</span>;</span><br><span class="line">        <span class="built_in">println!</span>(<span class="string">&quot;The value of x in the inner scope is: &#123;&#125;&quot;</span>, x);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="built_in">println!</span>(<span class="string">&quot;The value of x is: &#123;&#125;&quot;</span>, x);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>这个程序首先将 <code>x</code> 绑定到值 <code>5</code> 上。接着通过 <code>let x =</code> 隐藏 <code>x</code>，获取初始值并加 <code>1</code>，这样 <code>x</code> 的值就变成 <code>6</code> 了。然后，在内部作用域内，第三个 <code>let</code> 语句也隐藏了 <code>x</code>，将之前的值乘以 <code>2</code>，<code>x</code> 得到的值是 <code>12</code>。当该作用域结束时，内部 shadowing 的作用域也结束了，<code>x</code> 又返回到 <code>6</code>。运行这个程序，它会有如下输出：</p>
-<figure class="highlight console"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> cargo run</span></span><br><span class="line">   Compiling variables v0.1.0 (file:///projects/variables)</span><br><span class="line">    Finished dev [unoptimized + debuginfo] target(s) in 0.31s</span><br><span class="line">     Running `target/debug/variables`</span><br><span class="line">The value of x in the inner scope is: 12</span><br><span class="line">The value of x is: 6</span><br></pre></td></tr></table></figure>
-
-<p>隐藏与将变量标记为 <code>mut</code> 是有区别的。当不小心尝试对变量重新赋值时，如果没有使用 <code>let</code> 关键字，就会导致编译时错误。通过使用 <code>let</code>，我们可以用这个值进行一些计算，不过计算完之后变量仍然是不可变的。</p>
-<p><code>mut</code> 与隐藏的另一个区别是，当再次使用 <code>let</code> 时，实际上创建了一个新变量，我们可以改变值的类型，但复用这个名字。例如，假设程序请求用户输入空格字符来说明希望在文本之间显示多少个空格，然而我们真正需要的是将输入存储成数字（多少个空格）：</p>
-<figure class="highlight rust"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> spaces = <span class="string">&quot;   &quot;</span>;</span><br><span class="line"><span class="keyword">let</span> spaces = spaces.len();</span><br></pre></td></tr></table></figure>
-
-<p>这里允许第一个 <code>spaces</code> 变量是字符串类型，而第二个 <code>spaces</code> 变量，它是一个恰巧与第一个变量同名的崭新变量，是数字类型。隐藏使我们不必使用不同的名字，如 <code>spaces_str</code> 和 <code>spaces_num</code>；相反，我们可以复用 <code>spaces</code> 这个更简单的名字。然而，如果尝试使用 <code>mut</code>，将会得到一个编译时错误，如下所示：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">let mut spaces &#x3D; &quot;   &quot;;</span><br><span class="line">spaces &#x3D; spaces.len();</span><br></pre></td></tr></table></figure>
-
-<p>这个错误说明，我们不能改变变量的类型：</p>
-<figure class="highlight console"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> cargo run</span></span><br><span class="line">   Compiling variables v0.1.0 (file:///projects/variables)</span><br><span class="line">error[E0308]: mismatched types</span><br><span class="line"><span class="meta"> --&gt;</span><span class="bash"> src/main.rs:3:14</span></span><br><span class="line">  |</span><br><span class="line">3 |     spaces = spaces.len();</span><br><span class="line">  |              ^^^^^^^^^^^^ expected `&amp;str`, found `usize`</span><br><span class="line"></span><br><span class="line">error: aborting due to previous error</span><br><span class="line"></span><br><span class="line">For more information about this error, try `rustc --explain E0308`.</span><br><span class="line">error: could not compile `variables`</span><br><span class="line"></span><br><span class="line">To learn more, run the command again with --verbose.</span><br></pre></td></tr></table></figure>
-
-<p>现在我们已经了解了变量如何工作，让我们看看变量可以拥有的更多数据类型。</p>
-
-      
-    </div>
-
-  </div>
-
-  <div class="article-footer">
-    <div class="article-meta pull-left">
-
-    
-
-    
-    
-
-    <span class="post-tags">
-      <i class="icon-tags"></i>
-        <a href="/tags/Rust/">Rust</a>
-    </span>
-    
-
-    </div>
-
-    
-  </div>
-</article>
 
 
 
 
-<nav class="pagination">
-  
-  
-</nav>
+
     </main>
 
     <footer class="site-footer">

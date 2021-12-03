@@ -6,7 +6,7 @@
   <link href="https://chf007.com/atom.xml" rel="self"/>
   
   <link href="https://chf007.com/"/>
-  <updated>2021-12-02T10:22:12.504Z</updated>
+  <updated>2021-12-03T08:53:36.998Z</updated>
   <id>https://chf007.com/</id>
   
   <author>
@@ -17,11 +17,11 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>Hello World</title>
-    <link href="https://chf007.com/2020/10/10/hello-world/"/>
-    <id>https://chf007.com/2020/10/10/hello-world/</id>
-    <published>2020-10-10T03:14:16.736Z</published>
-    <updated>2021-12-02T10:22:12.504Z</updated>
+    <title>Rust 引用与借用</title>
+    <link href="https://chf007.com/2021/12/03/rust-references-and-borrowing/"/>
+    <id>https://chf007.com/2021/12/03/rust-references-and-borrowing/</id>
+    <published>2021-12-03T08:51:55.000Z</published>
+    <updated>2021-12-03T08:53:36.998Z</updated>
     
     
       
@@ -34,10 +34,31 @@
     
     
     
-    <category term="生活" scheme="https://chf007.com/categories/%E7%94%9F%E6%B4%BB/"/>
+    
+    <category term="Rust" scheme="https://chf007.com/tags/Rust/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Rust 变量和可变性</title>
+    <link href="https://chf007.com/2021/12/03/rust-variables-and-mutability/"/>
+    <id>https://chf007.com/2021/12/03/rust-variables-and-mutability/</id>
+    <published>2021-12-03T08:51:16.000Z</published>
+    <updated>2021-12-03T08:52:53.299Z</updated>
     
     
-    <category term="haha" scheme="https://chf007.com/tags/haha/"/>
+      
+      
+        
+        
+    <summary type="html"></summary>
+        
+      
+    
+    
+    
+    
+    <category term="Rust" scheme="https://chf007.com/tags/Rust/"/>
     
   </entry>
   
