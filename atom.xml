@@ -6,7 +6,7 @@
   <link href="https://chf007.com/atom.xml" rel="self"/>
   
   <link href="https://chf007.com/"/>
-  <updated>2021-12-03T08:53:36.998Z</updated>
+  <updated>2023-01-31T05:51:07.067Z</updated>
   <id>https://chf007.com/</id>
   
   <author>
@@ -17,11 +17,11 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>Rust 引用与借用</title>
-    <link href="https://chf007.com/2021/12/03/rust-references-and-borrowing/"/>
-    <id>https://chf007.com/2021/12/03/rust-references-and-borrowing/</id>
-    <published>2021-12-03T08:51:55.000Z</published>
-    <updated>2021-12-03T08:53:36.998Z</updated>
+    <title>Gitlab 仓库迁移 Coding 指引</title>
+    <link href="https://chf007.com/2023/01/31/gitlab-migration-coding-guidelines/"/>
+    <id>https://chf007.com/2023/01/31/gitlab-migration-coding-guidelines/</id>
+    <published>2023-01-30T16:00:00.000Z</published>
+    <updated>2023-01-31T05:51:07.067Z</updated>
     
     
       
@@ -35,30 +35,11 @@
     
     
     
-    <category term="Rust" scheme="https://chf007.com/tags/Rust/"/>
+    <category term="Gitlab" scheme="https://chf007.com/tags/Gitlab/"/>
     
-  </entry>
-  
-  <entry>
-    <title>Rust 变量和可变性</title>
-    <link href="https://chf007.com/2021/12/03/rust-variables-and-mutability/"/>
-    <id>https://chf007.com/2021/12/03/rust-variables-and-mutability/</id>
-    <published>2021-12-03T08:51:16.000Z</published>
-    <updated>2021-12-03T08:52:53.299Z</updated>
+    <category term="Coding" scheme="https://chf007.com/tags/Coding/"/>
     
-    
-      
-      
-        
-        
-    <summary type="html"></summary>
-        
-      
-    
-    
-    
-    
-    <category term="Rust" scheme="https://chf007.com/tags/Rust/"/>
+    <category term="Git" scheme="https://chf007.com/tags/Git/"/>
     
   </entry>
   
