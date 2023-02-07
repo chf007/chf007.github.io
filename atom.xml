@@ -6,7 +6,7 @@
   <link href="https://chf007.com/atom.xml" rel="self"/>
   
   <link href="https://chf007.com/"/>
-  <updated>2023-01-31T05:51:07.067Z</updated>
+  <updated>2023-02-07T02:23:22.499Z</updated>
   <id>https://chf007.com/</id>
   
   <author>
@@ -15,6 +15,31 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>一种适用于中小团队的 Git 工作流</title>
+    <link href="https://chf007.com/2023/02/07/a-git-workflow-for-small-teams/"/>
+    <id>https://chf007.com/2023/02/07/a-git-workflow-for-small-teams/</id>
+    <published>2023-02-06T16:00:00.000Z</published>
+    <updated>2023-02-07T02:23:22.499Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html"></summary>
+        
+      
+    
+    
+    
+    
+    <category term="Gitlab" scheme="https://chf007.com/tags/Gitlab/"/>
+    
+    <category term="Git" scheme="https://chf007.com/tags/Git/"/>
+    
+  </entry>
   
   <entry>
     <title>Gitlab 仓库迁移 Coding 指引</title>

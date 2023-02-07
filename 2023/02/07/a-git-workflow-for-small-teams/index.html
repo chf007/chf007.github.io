@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   
-  <title>怒涛小站 | chf007 的自留地</title>
+  <title>一种适用于中小团队的 Git 工作流 | 怒涛小站 | chf007 的自留地</title>
 
   
   <meta name="author" content="chf007">
@@ -14,12 +14,15 @@
   
 
   
+  
+  <meta name="keywords" content="Gitlab,Git">
+  
 
   <meta id="viewport" name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
 
-  
+  <meta property="og:title" content="一种适用于中小团队的 Git 工作流"/>
 
   <meta property="og:site_name" content="怒涛小站"/>
 
@@ -73,12 +76,11 @@
 </header>
 
     <main class="site-main posts-loop">
-    
-  <article>
+    <article>
 
   
     
-    <h3 class="article-title"><a href="/2023/02/07/a-git-workflow-for-small-teams/"><span>一种适用于中小团队的 Git 工作流</span></a></h3>
+    <h3 class="article-title"><span>一种适用于中小团队的 Git 工作流</span></h3>
     
   
 
@@ -147,98 +149,13 @@
   </div>
 </article>
 
-
-
-  <article>
-
-  
-    
-    <h3 class="article-title"><a href="/2023/01/31/gitlab-migration-coding-guidelines/"><span>Gitlab 仓库迁移 Coding 指引</span></a></h3>
-    
   
 
-  <div class="article-top-meta">
-    <span class="posted-on">
-      <a href="/2023/01/31/gitlab-migration-coding-guidelines/" rel="bookmark">
-        <time class="entry-date published" datetime="2023-01-30T16:00:00.000Z">
-          2023-01-31
-        </time>
-      </a>
-    </span>
-  </div>
-
-
-  
-
-  <div class="article-content">
-    <div class="entry">
-      
-        <p>因公司决策将代码仓库从 Gitlab 换成 Coding，在此记录一下迁移过程。</p>
-<ol>
-<li>针对要迁移的 Gitlab 仓库提醒涉及的团队成员及时提交和推送要保留的本地分支，本次迁移只迁移 Gitlab 服务器上现存在分支、Tag、历史记录</li>
-<li>将要迁移的 Gitlab 仓库进行归档，此时仓库为只读状态不能提交和推送</li>
-<li>Coding 中建立一个新的空仓库，不需要初始化</li>
-<li>Coding 个人设置中添加 SSH 公钥，建议和 Gitlab 中的个人公钥保持一致</li>
-<li>执行以下命令克隆 Gitlab 仓库裸库到本地 <code>git clone --bare git@gitlab.xxx.com:xxx-fe/xxx-webapp.git</code> ( <em>以下皆以 xxx-fe/xxx-webapp 为例，实际操作中要换成真实的仓库</em> )</li>
-<li>进入 <code>xxx-webapp.git</code> 目录，执行 <code>du -d 1 -h</code> 查看仓库体积，Coding 对仓库体积大小有限制</li>
-<li>检查仓库体积无问题后，执行 <code>git push --mirror git@e.coding.net:yyy/tw/xxx-webapp.git</code> 命令推送裸仓库至 Coding 建好的空仓库中 (地址 <a href="mailto:&#x67;&#x69;&#x74;&#x40;&#101;&#46;&#x63;&#111;&#x64;&#x69;&#x6e;&#103;&#46;&#110;&#101;&#x74;">&#x67;&#x69;&#x74;&#x40;&#101;&#46;&#x63;&#111;&#x64;&#x69;&#x6e;&#103;&#46;&#110;&#101;&#x74;</a>:yyy/tw/xxx-webapp.git 从建好的 Coding 仓库中获取)</li>
-<li>刷新 Coding 仓库，检查是否推送成功，检查分支、Tag、历史提交记录是否正常，并转移至相关分组</li>
-<li>重新从 Coding 拉取代码或更改本地仓库 git 远程地址</li>
-<li>酌情迁移 .gitlab-ci.yml 至 Jenkinsfile (注意 Jenkinsfile 和 Jenkins 手工配置只能留一个)</li>
-</ol>
-<blockquote>
-<p>Coding 公钥拉取失败提示 Permission denied(publickey)：<a target="_blank" rel="noopener" href="https://help.coding.net/docs/repo/faq.html#permission-denied">https://help.coding.net/docs/repo/faq.html#permission-denied</a><br>Coding 的公钥配置拉取代码如果失败，按这个配置一下，说明 git 版本太新，默认不支持 RSA 密钥了，需要配置一下支持 RSA</p>
-</blockquote>
-<blockquote>
-<p>Coding 不支持个人空间，自已有在 Gitlab 个人空间中有仓库的，自行备份处理</p>
-</blockquote>
-<blockquote>
-<p>Coding 不支持代码片段，自已有在 Gitlab 中有代码片段的，自行备份处理</p>
-</blockquote>
-<blockquote>
-<p>Gitlab 中有用的 issue 建议迁移到 Coding 中的任务</p>
-</blockquote>
-<blockquote>
-<p>Gitlab 中有用的 wiki 建议迁移到 Coding 中的 wiki</p>
-</blockquote>
-<blockquote>
-<blockquote>
-<p><strong>有同时在搞公司项目在外面又有个人 github 项目的，切记不要误把公司代码提交到 github 上去，任何代码代码仓库（不管公司内部的还是外部的）里切记不要提交实际在用的密码密钥之类的敏感信息!!!</strong></p>
-</blockquote>
-</blockquote>
-
-      
-    </div>
-
-  </div>
-
-  <div class="article-footer">
-    <div class="article-meta pull-left">
-
-    
-
-    
-    
-
-    <span class="post-tags">
-      <i class="icon-tags"></i>
-        <a href="/tags/Gitlab/">Gitlab</a><a href="/tags/Coding/">Coding</a><a href="/tags/Git/">Git</a>
-    </span>
-    
-
-    </div>
-
-    
-  </div>
-</article>
 
 
 
 
-<nav class="pagination">
-  
-  
-</nav>
+
     </main>
 
     <footer class="site-footer">
