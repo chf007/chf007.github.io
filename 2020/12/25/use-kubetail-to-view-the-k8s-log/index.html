@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   
-  <title>怒涛小站 | chf007 的自留地</title>
+  <title>使用 kubectl 及 kubetail 查看腾讯云 TKE 日志 | 怒涛小站 | chf007 的自留地</title>
 
   
   <meta name="author" content="chf007">
@@ -14,12 +14,15 @@
   
 
   
+  
+  <meta name="keywords" content="Kubernetes">
+  
 
   <meta id="viewport" name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
 
-  
+  <meta property="og:title" content="使用 kubectl 及 kubetail 查看腾讯云 TKE 日志"/>
 
   <meta property="og:site_name" content="怒涛小站"/>
 
@@ -73,98 +76,11 @@
 </header>
 
     <main class="site-main posts-loop">
-    
-  <article>
+    <article>
 
   
     
-    <h3 class="article-title"><a href="/2022/11/10/gitlab-migration-coding-guidelines/"><span>Gitlab 仓库迁移 Coding 指引</span></a></h3>
-    
-  
-
-  <div class="article-top-meta">
-    <span class="posted-on">
-      <a href="/2022/11/10/gitlab-migration-coding-guidelines/" rel="bookmark">
-        <time class="entry-date published" datetime="2022-11-09T16:00:00.000Z">
-          2022-11-10
-        </time>
-      </a>
-    </span>
-  </div>
-
-
-  
-
-  <div class="article-content">
-    <div class="entry">
-      
-        <p>因公司决策将代码仓库从 Gitlab 换成 Coding，在此记录一下迁移过程。</p>
-<ol>
-<li>针对要迁移的 Gitlab 仓库提醒涉及的团队成员及时提交和推送要保留的本地分支，本次迁移只迁移 Gitlab 服务器上现存在分支、Tag、历史记录</li>
-<li>将要迁移的 Gitlab 仓库进行归档，此时仓库为只读状态不能提交和推送</li>
-<li>Coding 中建立一个新的空仓库，不需要初始化</li>
-<li>Coding 个人设置中添加 SSH 公钥，建议和 Gitlab 中的个人公钥保持一致</li>
-<li>执行以下命令克隆 Gitlab 仓库裸库到本地 <code>git clone --bare git@gitlab.xxx.com:xxx-fe/xxx-webapp.git</code> ( <em>以下皆以 xxx-fe/xxx-webapp 为例，实际操作中要换成真实的仓库</em> )</li>
-<li>进入 <code>xxx-webapp.git</code> 目录，执行 <code>du -d 1 -h</code> 查看仓库体积，Coding 对仓库体积大小有限制</li>
-<li>检查仓库体积无问题后，执行 <code>git push --mirror git@e.coding.net:yyy/tw/xxx-webapp.git</code> 命令推送裸仓库至 Coding 建好的空仓库中 (地址 <a href="mailto:&#x67;&#105;&#x74;&#64;&#x65;&#x2e;&#99;&#111;&#100;&#105;&#x6e;&#x67;&#x2e;&#110;&#101;&#116;">&#x67;&#105;&#x74;&#64;&#x65;&#x2e;&#99;&#111;&#100;&#105;&#x6e;&#x67;&#x2e;&#110;&#101;&#116;</a>:yyy/tw/xxx-webapp.git 从建好的 Coding 仓库中获取)</li>
-<li>刷新 Coding 仓库，检查是否推送成功，检查分支、Tag、历史提交记录是否正常，并转移至相关分组</li>
-<li>重新从 Coding 拉取代码或更改本地仓库 git 远程地址</li>
-<li>酌情迁移 .gitlab-ci.yml 至 Jenkinsfile (注意 Jenkinsfile 和 Jenkins 手工配置只能留一个)</li>
-</ol>
-<blockquote>
-<p>Coding 公钥拉取失败提示 Permission denied(publickey)：<a target="_blank" rel="noopener" href="https://help.coding.net/docs/repo/faq.html#permission-denied">https://help.coding.net/docs/repo/faq.html#permission-denied</a><br>Coding 的公钥配置拉取代码如果失败，按这个配置一下，说明 git 版本太新，默认不支持 RSA 密钥了，需要配置一下支持 RSA</p>
-</blockquote>
-<blockquote>
-<p>Coding 不支持个人空间，自已有在 Gitlab 个人空间中有仓库的，自行备份处理</p>
-</blockquote>
-<blockquote>
-<p>Coding 不支持代码片段，自已有在 Gitlab 中有代码片段的，自行备份处理</p>
-</blockquote>
-<blockquote>
-<p>Gitlab 中有用的 issue 建议迁移到 Coding 中的任务</p>
-</blockquote>
-<blockquote>
-<p>Gitlab 中有用的 wiki 建议迁移到 Coding 中的 wiki</p>
-</blockquote>
-<blockquote>
-<blockquote>
-<p><strong>有同时在搞公司项目在外面又有个人 github 项目的，切记不要误把公司代码提交到 github 上去，任何代码代码仓库（不管公司内部的还是外部的）里切记不要提交实际在用的密码密钥之类的敏感信息!!!</strong></p>
-</blockquote>
-</blockquote>
-
-      
-    </div>
-
-  </div>
-
-  <div class="article-footer">
-    <div class="article-meta pull-left">
-
-    
-
-    
-    
-
-    <span class="post-tags">
-      <i class="icon-tags"></i>
-        <a href="/tags/Gitlab/">Gitlab</a><a href="/tags/Git/">Git</a><a href="/tags/Coding/">Coding</a>
-    </span>
-    
-
-    </div>
-
-    
-    <span style="float: right;"><a target="_blank" rel="noopener" href="https://github.com/chf007/chf007.github.io/issues/new" title="去 Github 通过 issue 添加评论">添加评论</a></span>
-  </div>
-</article>
-
-
-
-  <article>
-
-  
-    
-    <h3 class="article-title"><a href="/2020/12/25/use-kubetail-to-view-the-k8s-log/"><span>使用 kubectl 及 kubetail 查看腾讯云 TKE 日志</span></a></h3>
+    <h3 class="article-title"><span>使用 kubectl 及 kubetail 查看腾讯云 TKE 日志</span></h3>
     
   
 
@@ -269,89 +185,13 @@
   </div>
 </article>
 
-
-
-  <article>
-
-  
-    
-    <h3 class="article-title"><a href="/2020/11/11/a-git-workflow-for-small-teams/"><span>一种适用于中小团队的 Git 工作流</span></a></h3>
-    
   
 
-  <div class="article-top-meta">
-    <span class="posted-on">
-      <a href="/2020/11/11/a-git-workflow-for-small-teams/" rel="bookmark">
-        <time class="entry-date published" datetime="2020-11-10T16:00:00.000Z">
-          2020-11-11
-        </time>
-      </a>
-    </span>
-  </div>
-
-
-  
-
-  <div class="article-content">
-    <div class="entry">
-      
-        <ol>
-<li>前端应用只有三种分支类型：<code>主干分支</code>、<code>特性分支</code>、<code>发布分支</code>。</li>
-<li>约定 <code>master</code> 为<code>主干分支</code>，代表当前生产环境最新代码，设为保护分支，只允提 MR 合并，不允许直接推送。</li>
-<li>开发一个需求前<br>3.1. 每人从 <code>master</code> 分支新建自已的<code>特性分支</code>，命名规则 <code>feature/YYYYMMDD-xxx</code>，其中 <em>YYYYMMDD</em> 代表需求所属迭代要发布的日期，<em>xxx</em> 可以根据自已要做的功能特性以简短有意义的英文命名。如 <em>feature/20201111-productBannerUpdate</em>。<br>3.2. TL、项目 Owner 或其他有权限的人，预先从 <code>master</code> 分支新建<code>发布分支</code>，命名规则 <code>release/YYYYMMDD[-xx]</code>，其中 <em>YYYYMMDD</em> 代表需求所属迭代要发布的日期。<code>发布分支</code>暂时设为保护分支，不允许随意合并。<code>[-xx]</code> 说明见 <code>5.2</code>。</li>
-<li>开发完成，需要部署开发/测试各环境时<br>4.1 每人推送自已的<code>特性分支</code>到远程 Gitlab 仓库中。<br>4.2 在 Gitlab 中发起 MR 请求，源分支为自已的<code>特性分支</code>，目标分支为 <code>3.2</code> 中建好的相应迭代的<code>发布分支</code>。<br>4.3 TL 或项目 Owner 进行简单的代码 review，检查无问题后合并代码。<br>4.4 TL 或项目 Owner 在 CI 系统各环境流水线中部署相应<code>发布分支</code>。</li>
-<li>需要发布生产环境时<br>5.1 TL 或项目 Owner 再次确认本次迭代要上线的需求已是否合入相应<code>发布分支</code>中，如无问题，则在 CI 系统 UAT 或生产环境流水线中部署相应<code>发布分支</code>。发布成功后，将<code>发布分支</code>合并到 <code>master</code> 分支，并打 Tag。<br>5.2 如果有本次迭代不需要上线的特性分支，则 TL 或项目 Owner 从 <code>master</code> 分支新建一个新的<code>发布分支</code>，命名规则为当前迭代的<code>发布分支</code>名末尾加上 <code>-01</code>，需要多次重复此步骤的就多次执行此步骤，结尾加 1 即可。确定如无问题，则在 CI 系统 UAT 或生产环境流水线中部署相应<code>发布分支</code>。发布成功后，将<code>发布分支</code>合并到 <code>master</code> 分支，并打 Tag。<br>5.3 发布 Tag 应设为保护 Tag，不允许随意创建。</li>
-<li>需要修复生产环境问题时<br>6.1 从 master 分支或相应 Tag 新建 hotfix 分支（本质上还是<code>特性分支</code>），命名规则 <code>hotfix/xxx</code>。<br>6.2 修复问题后，直接发布 hotfix 分支到相应环境验证，无问题后直接发布生产环境，生产环境发布成功后，将该 hotfix 分支合并到 <code>master</code> 分支，并打 Tag。</li>
-<li>发布分支合并冲突解决策略<br>7.1 有条件的应在 release 分支上解决冲突。<br>7.2 如无 release 分支权限，应基于 release 分支拉一个临时分支解决冲突并合回 release 分支。<em>注意：release 分支如有撤出发布的分支，应基于新的 release 分支重新执行该步骤（有条件的，应优先使用 7.1 的方式解决冲突）。</em><br>7.3 不要使用 Gitlab 自带的在线解决冲突工具。</li>
-</ol>
-<blockquote>
-<h6 id="其它Tips"><a href="#其它Tips" class="headerlink" title="其它Tips"></a>其它Tips</h6><ul>
-<li>每人在开发过程中，各自的<code>特性分支</code>应随时合并 <code>master</code> 分支上生产环境最新代码。</li>
-<li><code>发布分支</code>应随时合并 <code>master</code> 分支上生产环境最新代码。</li>
-<li>每人的<code>特性分支</code>应按照需求尽量原子化，做到可单独上线或临时不需要上线时不用再手工剔除代码。<ul>
-<li>原子化的颗粒度由个人把控，接到一个需求可以拆成多个分支，也可以就一个分支，只要符合上述原则就行。</li>
-<li>在实际开发中，遇到大的项目可能会出现在开发阶段有依赖其他人的代码的，例如一些公共逻辑，这些公共逻辑应由单独一个<code>特性分支</code>维护。每人根据具体情况，合并到自已的<code>特性分支</code>，或自已再维护一个临时分支，以保持自已的<code>特性分支</code>的纯洁性。</li>
-</ul>
-</li>
-<li>为尽量避免合并冲突，各项目应分析代码库中多人频繁操作的文件，如路由配置文件、接口定义文件等，按模块进行拆分，避免多人同时改动同一个文件的情况出现。</li>
-<li>前期人工操作多，且瓶颈在 TL 或项目 Owner 身上，最好工具化。</li>
-<li>主要参考 AoneFlow 分支管理模型，参见 <a target="_blank" rel="noopener" href="https://developer.aliyun.com/article/573549">在阿里，我们如何管理代码分支？</a> 只适合 Web 这种生产环境只有一种最新业务形态的场景，手机 APP、私有化部署等 这种需要同时保留多个生产版本的场景并不适用。</li>
-</ul>
-</blockquote>
-
-      
-    </div>
-
-  </div>
-
-  <div class="article-footer">
-    <div class="article-meta pull-left">
-
-    
-
-    
-    
-
-    <span class="post-tags">
-      <i class="icon-tags"></i>
-        <a href="/tags/Gitlab/">Gitlab</a><a href="/tags/Git/">Git</a>
-    </span>
-    
-
-    </div>
-
-    
-    <span style="float: right;"><a target="_blank" rel="noopener" href="https://github.com/chf007/chf007.github.io/issues/new" title="去 Github 通过 issue 添加评论">添加评论</a></span>
-  </div>
-</article>
 
 
 
 
-<nav class="pagination">
-  
-  
-</nav>
+
     </main>
 
     <footer class="site-footer">

@@ -15,7 +15,7 @@
 
   
   
-  <meta name="keywords" content="Gitlab,Coding,Git">
+  <meta name="keywords" content="Gitlab,Git,Coding">
   
 
   <meta id="viewport" name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
@@ -86,9 +86,9 @@
 
   <div class="article-top-meta">
     <span class="posted-on">
-      <a href="/2023/01/31/gitlab-migration-coding-guidelines/" rel="bookmark">
-        <time class="entry-date published" datetime="2023-01-30T16:00:00.000Z">
-          2023-01-31
+      <a href="/2022/11/10/gitlab-migration-coding-guidelines/" rel="bookmark">
+        <time class="entry-date published" datetime="2022-11-09T16:00:00.000Z">
+          2022-11-10
         </time>
       </a>
     </span>
@@ -108,7 +108,7 @@
 <li>Coding 个人设置中添加 SSH 公钥，建议和 Gitlab 中的个人公钥保持一致</li>
 <li>执行以下命令克隆 Gitlab 仓库裸库到本地 <code>git clone --bare git@gitlab.xxx.com:xxx-fe/xxx-webapp.git</code> ( <em>以下皆以 xxx-fe/xxx-webapp 为例，实际操作中要换成真实的仓库</em> )</li>
 <li>进入 <code>xxx-webapp.git</code> 目录，执行 <code>du -d 1 -h</code> 查看仓库体积，Coding 对仓库体积大小有限制</li>
-<li>检查仓库体积无问题后，执行 <code>git push --mirror git@e.coding.net:yyy/tw/xxx-webapp.git</code> 命令推送裸仓库至 Coding 建好的空仓库中 (地址 <a href="mailto:&#x67;&#x69;&#x74;&#x40;&#101;&#46;&#x63;&#111;&#x64;&#x69;&#x6e;&#103;&#46;&#110;&#101;&#x74;">&#x67;&#x69;&#x74;&#x40;&#101;&#46;&#x63;&#111;&#x64;&#x69;&#x6e;&#103;&#46;&#110;&#101;&#x74;</a>:yyy/tw/xxx-webapp.git 从建好的 Coding 仓库中获取)</li>
+<li>检查仓库体积无问题后，执行 <code>git push --mirror git@e.coding.net:yyy/tw/xxx-webapp.git</code> 命令推送裸仓库至 Coding 建好的空仓库中 (地址 <a href="mailto:&#x67;&#105;&#x74;&#64;&#x65;&#x2e;&#99;&#111;&#100;&#105;&#x6e;&#x67;&#x2e;&#110;&#101;&#116;">&#x67;&#105;&#x74;&#64;&#x65;&#x2e;&#99;&#111;&#100;&#105;&#x6e;&#x67;&#x2e;&#110;&#101;&#116;</a>:yyy/tw/xxx-webapp.git 从建好的 Coding 仓库中获取)</li>
 <li>刷新 Coding 仓库，检查是否推送成功，检查分支、Tag、历史提交记录是否正常，并转移至相关分组</li>
 <li>重新从 Coding 拉取代码或更改本地仓库 git 远程地址</li>
 <li>酌情迁移 .gitlab-ci.yml 至 Jenkinsfile (注意 Jenkinsfile 和 Jenkins 手工配置只能留一个)</li>
@@ -149,13 +149,14 @@
 
     <span class="post-tags">
       <i class="icon-tags"></i>
-        <a href="/tags/Gitlab/">Gitlab</a><a href="/tags/Coding/">Coding</a><a href="/tags/Git/">Git</a>
+        <a href="/tags/Gitlab/">Gitlab</a><a href="/tags/Git/">Git</a><a href="/tags/Coding/">Coding</a>
     </span>
     
 
     </div>
 
     
+    <span style="float: right;"><a target="_blank" rel="noopener" href="https://github.com/chf007/chf007.github.io/issues/new" title="去 Github 通过 issue 添加评论">添加评论</a></span>
   </div>
 </article>
 

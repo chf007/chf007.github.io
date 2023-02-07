@@ -6,7 +6,7 @@
   <link href="https://chf007.com/atom.xml" rel="self"/>
   
   <link href="https://chf007.com/"/>
-  <updated>2023-02-07T02:23:22.499Z</updated>
+  <updated>2023-02-07T02:42:21.365Z</updated>
   <id>https://chf007.com/</id>
   
   <author>
@@ -17,11 +17,11 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>一种适用于中小团队的 Git 工作流</title>
-    <link href="https://chf007.com/2023/02/07/a-git-workflow-for-small-teams/"/>
-    <id>https://chf007.com/2023/02/07/a-git-workflow-for-small-teams/</id>
-    <published>2023-02-06T16:00:00.000Z</published>
-    <updated>2023-02-07T02:23:22.499Z</updated>
+    <title>Gitlab 仓库迁移 Coding 指引</title>
+    <link href="https://chf007.com/2022/11/10/gitlab-migration-coding-guidelines/"/>
+    <id>https://chf007.com/2022/11/10/gitlab-migration-coding-guidelines/</id>
+    <published>2022-11-09T16:00:00.000Z</published>
+    <updated>2023-02-07T02:42:21.365Z</updated>
     
     
       
@@ -39,14 +39,39 @@
     
     <category term="Git" scheme="https://chf007.com/tags/Git/"/>
     
+    <category term="Coding" scheme="https://chf007.com/tags/Coding/"/>
+    
   </entry>
   
   <entry>
-    <title>Gitlab 仓库迁移 Coding 指引</title>
-    <link href="https://chf007.com/2023/01/31/gitlab-migration-coding-guidelines/"/>
-    <id>https://chf007.com/2023/01/31/gitlab-migration-coding-guidelines/</id>
-    <published>2023-01-30T16:00:00.000Z</published>
-    <updated>2023-01-31T05:51:07.067Z</updated>
+    <title>使用 kubectl 及 kubetail 查看腾讯云 TKE 日志</title>
+    <link href="https://chf007.com/2020/12/25/use-kubetail-to-view-the-k8s-log/"/>
+    <id>https://chf007.com/2020/12/25/use-kubetail-to-view-the-k8s-log/</id>
+    <published>2020-12-24T16:00:00.000Z</published>
+    <updated>2023-02-07T02:59:59.773Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html"></summary>
+        
+      
+    
+    
+    
+    
+    <category term="Kubernetes" scheme="https://chf007.com/tags/Kubernetes/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>一种适用于中小团队的 Git 工作流</title>
+    <link href="https://chf007.com/2020/11/11/a-git-workflow-for-small-teams/"/>
+    <id>https://chf007.com/2020/11/11/a-git-workflow-for-small-teams/</id>
+    <published>2020-11-10T16:00:00.000Z</published>
+    <updated>2023-02-07T02:40:43.158Z</updated>
     
     
       
@@ -61,8 +86,6 @@
     
     
     <category term="Gitlab" scheme="https://chf007.com/tags/Gitlab/"/>
-    
-    <category term="Coding" scheme="https://chf007.com/tags/Coding/"/>
     
     <category term="Git" scheme="https://chf007.com/tags/Git/"/>
     
