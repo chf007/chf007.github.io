@@ -1,0 +1,56 @@
+==================================================================
+https://keybase.io/chf007
+--------------------------------------------------------------------
+
+I hereby claim:
+
+  * I am an admin of https://chf007.com
+  * I am chf007 (https://keybase.io/chf007) on keybase.
+  * I have a public key ASAij5DCEqEP5z1p7WUSWeKj4WAX4Lc9pT-J6BicxRNuvQo
+
+To do so, I am signing this object:
+
+{
+  "body": {
+    "key": {
+      "eldest_kid": "0120228f90c212a10fe73d69ed651259e2a3e16017e0b73da53f89e8189cc5136ebd0a",
+      "host": "keybase.io",
+      "kid": "0120228f90c212a10fe73d69ed651259e2a3e16017e0b73da53f89e8189cc5136ebd0a",
+      "uid": "56fbe09ccf653afdb28faf2d24078019",
+      "username": "chf007"
+    },
+    "merkle_root": {
+      "ctime": 1709521415,
+      "hash": "ae5131658ac49fc2e62fb4642d0261f0f6ce12d1ceedcf2e660cca014eb1019dd1f07955207d1070594731dea63ad5b8cc2ba42d6ee63b809281f57f8537cf5e",
+      "hash_meta": "4d82a713974056243f7c05b768100b1c713d188c9dfb4552fb054e3fc8df702f",
+      "seqno": 25515817
+    },
+    "service": {
+      "entropy": "8azH4qrIc/xAtCeR1LHZFWFW",
+      "hostname": "chf007.com",
+      "protocol": "https:"
+    },
+    "type": "web_service_binding",
+    "version": 2
+  },
+  "client": {
+    "name": "keybase.io go client",
+    "version": "6.2.5"
+  },
+  "ctime": 1709521543,
+  "expire_in": 504576000,
+  "prev": "8727ac1fd91f19fbb8efee0412ff389a75cbd7e5ef92f626cbc2c37e82045cb4",
+  "seqno": 9,
+  "tag": "signature"
+}
+
+which yields the signature:
+
+hKRib2R5hqhkZXRhY2hlZMOpaGFzaF90eXBlCqNrZXnEIwEgIo+QwhKhD+c9ae1lElnio+FgF+C3PaU/iegYnMUTbr0Kp3BheWxvYWTESpcCCcQghyesH9kfGfu47+4EEv84mnXL1+XvkvYmy8LDfoIEXLTEIGPhrFnJa8xZ7asYU4PzzYqx5kkBA3x/l+Q3OVueDMpAAgHCo3NpZ8RA9XNJtA+Rn0jLBkrgiGQ8AdKLy0bILbrHq6JURyjepSxkG+eXSgouhkYYcJbwi5BvKcLUhdgzTKKYwmh1pSECDahzaWdfdHlwZSCkaGFzaIKkdHlwZQildmFsdWXEICXpciuByeHuRpS9BbYElVIHvJKs3VYD6YF2wYoce0WMo3RhZ80CAqd2ZXJzaW9uAQ==
+
+And finally, I am proving ownership of this host by posting or
+appending to this document.
+
+View my publicly-auditable identity here: https://keybase.io/chf007
+
+==================================================================
